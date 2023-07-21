@@ -1,0 +1,105 @@
+// See https://aka.ms/new-console-template for more information
+
+using MyCodeLibrary;
+using System.Collections;
+using System.Collections.Generic;
+namespace CShharpBasics
+{
+    class Program
+    {
+         static void Main(string[] args)
+        {
+            //WorkingWithArrays();
+            ShowEmpList();
+            //CollectionsDemo();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            /*            Console.WriteLine("Hello, World!");
+                        Maths m = new Maths();
+                        int fno = 10, sno = 20;
+
+                        //m.CallByValue(fno, sno);
+                        m.CallByReference(ref fno, ref sno);
+                        Console.WriteLine("===============");
+                        Console.WriteLine(fno);
+                        Console.WriteLine(sno);*/
+        }
+
+        private static void CollectionsDemo()
+        {
+            List<int> li = new List<int>();
+            li.Add(100);
+
+
+            List<string> li2 = new List<string>();
+            li2.Add("Hello");
+
+
+            ArrayList al = new ArrayList();
+            al.Add(1);
+            al.Add(23.45f);
+            al.Add(34.56777d);
+            al.Add("Welcome");
+            al.Add('A');
+
+            foreach (var item in al)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+        private static void ShowEmpList()
+        {
+            Employee emp = new Employee();
+            emp.EmployeeID = 101;
+            emp.EmpName = "Kamlesh";
+            emp.Salary = 77778;
+            emp.City = "Pune";
+            List<Employee> list = new List<Employee>();
+            list.Add(emp);
+
+            list.Add(new Employee { EmployeeID = 103, EmpName = "Sahil", Salary = 20000, City = "Mumbai" });
+            list.Insert(1, new Employee { EmployeeID = 102, EmpName = "Kamal", Salary = 40000, City = "Banglaore" });
+            foreach (var item in list)
+            {
+                Console.WriteLine(item.EmployeeID);
+                Console.WriteLine(item.EmpName);
+                Console.WriteLine(item.Salary);
+                Console.WriteLine(item.City);
+            }
+        }
+
+        private static void WorkingWithArrays()
+        {
+            int[] arr = new int[5] { 1, 2, 3, 4, 5 };
+
+            int[] arr1 = new int[] { 1, 2, 3, 4, 5 };
+
+            int[] arr2 = new int[5];
+            arr2[0] = 10;
+            arr2[1] = 20;
+            arr2[2] = 30;
+            arr2[3] = 40;
+            arr2[4] = 50;
+
+            //var i = "Hello";
+
+            foreach (var item in arr)
+            {
+                Console.WriteLine(item);
+            }
+        }
+    }
+}

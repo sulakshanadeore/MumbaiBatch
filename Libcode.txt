@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MyCodeLibrary
+{
+    public class Employee
+    {
+
+        private int _empid;
+
+        public int EmployeeID
+        {
+            get { return _empid; }
+            set { _empid = value; }
+        }
+
+
+        private string _ename;
+
+        public string EmpName
+        {
+            get { return _ename; }
+            set { _ename = value; }
+        }
+
+
+        private float _sal;
+
+        public float Salary
+        {
+            get { return _sal; }
+            set {
+                if (value > 0)
+                {
+                    _sal = value;
+                }
+                else
+                {
+                    Console.WriteLine("Not valid");
+                }
+                }
+        }
+        public string City { get; set; }
+
+
+
+    }
+}
