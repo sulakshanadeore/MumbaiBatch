@@ -1,0 +1,127 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MyCodeLibrary
+{
+
+    public delegate void AddEmployee(int empid, string name);
+
+
+    public class EmployeeOperations
+    {
+        public static List<Employee> employees = new List<Employee>();
+
+        public void AddToDatabase(int empid, string name)
+        {
+            Console.WriteLine("Added to database successfully.....");
+        
+        }
+
+        public void ShowList()
+        {
+
+            foreach (var item in employees)
+            {
+                Console.WriteLine($"{item.EmployeeID} ,{item.EmpName}");
+            }
+        }
+
+        public void InsertEmployee(int empid, string name)
+        {
+            employees.Add(new Employee {EmployeeID=empid,EmpName=name });
+
+        
+        }
+
+
+
+
+    }
+
+
+    public class Manager
+    {
+        public virtual void CalculateSalary()
+        {
+            Console.WriteLine("Manager calcualte salary");
+        }
+    }
+
+    public class Employee:Manager
+    {
+
+        public override  void CalculateSalary()
+        {
+            base.CalculateSalary();
+        }
+
+
+
+        private int _empid;
+
+        public int EmployeeID
+        {
+            get { return _empid; }
+            set {
+                if (value>0)
+                {
+                    _empid = value;
+                }
+                else
+                {
+                    throw new EmployeeNotFoundException("This employee id doesnot exist");
+                }
+                
+            
+            }
+        }
+
+
+        private string _ename;
+
+        public string EmpName
+        {
+            get { return _ename; }
+            set { _ename = value; }
+        }
+
+
+        private float _sal;
+
+        public float Salary
+        {
+            get { return _sal; }
+            set {
+                if (value > 0)
+                {
+                    _sal = value;
+                }
+                else
+                {
+                    Console.WriteLine("Not valid");
+                }
+                }
+        }
+        public string City { get; set; }
+
+
+
+    }
+
+
+
+    public class CEO:Employee
+    {
+
+
+        public sealed override  void CalculateSalary() 
+        { 
+        
+        
+        }
+    }
+
+}

@@ -1,0 +1,285 @@
+// See https://aka.ms/new-console-template for more information
+
+using MyCodeLibrary;
+using System.Collections;
+using System.Collections.Generic;
+namespace CShharpBasics
+{
+    class Program
+    {
+         static void Main(string[] args)
+        {
+
+         //   Employee emp = new Employee();
+         //   emp.EmployeeID = 101;
+         //   emp.EmpName = "Kamlesh";
+         //   emp.Salary = 77778;
+         //   emp.City = "Pune";
+
+         //   List<Employee> list = new List<Employee>();
+         //   list.Add(emp);
+
+         //   list.Add(new Employee { EmployeeID = 103, EmpName = "Sahil", Salary = 20000, City = "Mumbai" });
+
+         //   list.Insert(1, new Employee { EmployeeID = 102, EmpName = "Kamal", Salary = 40000, City = "Banglaore" });
+
+         //   list.ForEach(e => 
+         //   { 
+         //       Console.WriteLine(e.EmployeeID);
+         //       Console.WriteLine(e.EmpName);
+         //       Console.WriteLine(e.Salary);
+         //       Console.WriteLine(e.City);
+         //   }
+         //   );
+
+
+         //   Console.WriteLine("===========");
+         //Employee efind   =list.Find(e => e.EmployeeID == 101 && e.EmpName=="Jack");
+         //   if (efind != null)
+         //   {
+         //       Console.WriteLine("Found");
+         //   }
+         //   else
+         //   {
+         //       Console.WriteLine("Notfound");
+         //   }
+         //   Console.WriteLine("=======");
+         //  int cnt= list.RemoveAll(e => e.EmployeeID != 0);
+         //   Console.WriteLine(cnt);
+         //   Console.WriteLine("Removed all");
+         //   Console.WriteLine(" ======== ");
+
+
+            try
+            {
+
+                EmployeeOperations operations = new EmployeeOperations();
+                AddEmployee empdel = new AddEmployee(operations.InsertEmployee);
+                empdel(10, "Jack");
+                empdel(11, "Jill");
+                empdel(12, "Simran");
+                empdel(13, "Deepa");
+                                Employee empobj = new Employee(); 
+                Console.WriteLine("Enter employeeid to find");
+                empobj.EmployeeID = Convert.ToInt32(Console.ReadLine());
+
+                Employee founddata=EmployeeOperations.employees.Find(e => e.EmployeeID == empobj.EmployeeID);
+                if (founddata!=null)
+                {
+                    Console.WriteLine("......Found.......\n");
+                    Console.WriteLine(founddata.EmployeeID);
+                    Console.WriteLine(founddata.EmpName);
+                    
+                }
+                else
+                {
+                    throw new EmployeeNotFoundException("No such employee found");
+                }
+            }
+            catch (ArithmeticException)
+            {
+
+                throw;
+            }
+            catch (StackOverflowException)
+            { }
+            catch (EmployeeNotFoundException ex)
+            {
+                Console.WriteLine(ex.Message);
+            
+            }
+
+            
+
+
+
+
+
+            //foreach (var item in list)
+            //{
+            //    Console.WriteLine($"{item.EmployeeID} {item.EmpName} {item.Salary} {item.City}");
+            //}
+
+
+
+
+
+
+
+
+
+            //WorkingWithArrays();
+            //ShowEmpList();
+            //AddEmployeesToList();
+            //CollectionsDemo();
+
+
+
+            //EmployeeOperations operations = new EmployeeOperations();
+
+            //AddEmployee del = delegate (int empid, string ename) {
+            //   EmployeeOperations.employees.Add(new Employee { EmployeeID = empid, EmpName = ename });
+
+
+            //};
+
+
+            //del.Invoke(1, "Hari");
+
+
+            //Action<Employee> action1 = (emp) => {
+            //    EmployeeOperations.employees.Add(new Employee {EmployeeID=emp.EmployeeID,EmpName=emp.EmpName });
+
+            //};
+
+            //action1(new Employee { EmployeeID = 10, EmpName = "Jack" });
+
+            //operations.ShowList();
+
+
+
+
+
+
+
+            //            AddEmployee add = new AddEmployee(operations.InsertEmployee);
+            //add(1, "Hari");
+            //add(2, "Shri");
+            //AddEmployee[] delArray = new AddEmployee[] {operations.InsertEmployee,operations.AddToDatabase};
+            //AddEmployee obj=(AddEmployee)MulticastDelegate.Combine(delArray);
+            //obj(1, "Hari");
+            //obj(2, "Shri");
+
+            //operations.ShowList();
+
+
+
+
+
+
+
+
+
+
+
+
+
+            /*            Console.WriteLine("Hello, World!");
+                        Maths m = new Maths();
+                        int fno = 10, sno = 20;
+
+                        //m.CallByValue(fno, sno);
+                        m.CallByReference(ref fno, ref sno);
+                        Console.WriteLine("===============");
+                        Console.WriteLine(fno);
+                        Console.WriteLine(sno);*/
+        }
+
+        private static void CollectionsDemo()
+        {
+            List<int> li = new List<int>();
+            li.Add(100);
+
+
+            List<string> li2 = new List<string>();
+            li2.Add("Hello");
+
+
+            ArrayList al = new ArrayList();
+            al.Add(1);
+            al.Add(23.45f);
+            al.Add(34.56777d);
+            al.Add("Welcome");
+            al.Add('A');
+
+            foreach (var item in al)
+            {
+                Console.WriteLine(item);
+            }
+        }
+
+        private static void AddEmployeesToList()
+        {
+            List<Employee> obj1 = new List<Employee> 
+            { 
+            new Employee(){EmployeeID=10,EmpName="Jack" },
+            new Employee(){EmployeeID=11,EmpName="Jim" },
+            new Employee(){EmployeeID=12,EmpName="Tim" },
+            new Employee(){EmployeeID=13,EmpName="John" },
+            new Employee(){EmployeeID=14,EmpName="Jill" }
+
+            };
+            foreach (var item in obj1)
+            {
+                Console.WriteLine($"{ item.EmployeeID},{ item.EmpName}");
+            }
+        
+        }
+
+
+
+        private static void ShowEmpList()
+        {
+            List<Employee> newlist = new List<Employee>();
+            newlist.Add(new Employee {EmployeeID=10,EmpName="Jack" });
+            newlist.Add(new Employee { EmployeeID = 11, EmpName = "Jill" });
+            newlist.Add(new Employee { EmployeeID = 12, EmpName = "Jim" });
+
+
+
+
+
+            Employee emp = new Employee();
+            emp.EmployeeID = 101;
+            emp.EmpName = "Kamlesh";
+            emp.Salary = 77778;
+            emp.City = "Pune";
+
+            List<Employee> list = new List<Employee>();
+            list.Add(emp);
+
+            list.Add(new Employee { EmployeeID = 103, EmpName = "Sahil", Salary = 20000, City = "Mumbai" });
+            list.Insert(1, new Employee { EmployeeID = 102, EmpName = "Kamal", Salary = 40000, City = "Banglaore" });
+
+            //list.AddRange(newlist);
+            list.InsertRange(0, newlist);
+
+
+            foreach (var item in list)
+            {
+                Console.WriteLine(item.EmployeeID);
+                Console.WriteLine(item.EmpName);
+                Console.WriteLine(item.Salary);
+                Console.WriteLine(item.City);
+            }
+
+
+            Console.WriteLine("Now remove......");
+            list.RemoveAt(0);
+            
+
+
+        }
+
+        private static void WorkingWithArrays()
+        {
+            int[] arr = new int[5] { 1, 2, 3, 4, 5 };
+
+            int[] arr1 = new int[] { 1, 2, 3, 4, 5 };
+
+            int[] arr2 = new int[5];
+            arr2[0] = 10;
+            arr2[1] = 20;
+            arr2[2] = 30;
+            arr2[3] = 40;
+            arr2[4] = 50;
+
+            //var i = "Hello";
+
+            foreach (var item in arr)
+            {
+                Console.WriteLine(item);
+            }
+        }
+    }
+}
